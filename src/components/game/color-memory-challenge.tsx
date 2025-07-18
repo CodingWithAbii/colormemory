@@ -9,6 +9,7 @@ import { Progress } from "@/components/ui/progress";
 import { BrainCircuit, Check, Info, Palette, Play, RotateCw, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { GameState, GridItem, Level, Question } from "@/types";
+import Image from "next/image";
 
 const GAME_COLORS = [
   { name: "red", tw: "bg-red-500", hex: "#ef4444" },
@@ -215,23 +216,12 @@ const ColorMemoryChallenge: FC = () => {
 
   if (gameState === "idle") {
     return (
-      <Card className="w-full max-w-md text-center shadow-xl">
-        <CardHeader>
-          <div className="flex justify-center items-center gap-2">
-            <BrainCircuit className="h-10 w-10 text-primary" />
-            <CardTitle className="text-3xl font-bold">Color Memory</CardTitle>
-          </div>
-          <CardDescription className="pt-2">Test your memory and color recognition speed!</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p className="mb-4">Memorize the color grid. After a short time, the colors will disappear and you will be asked a question. Good luck!</p>
-        </CardContent>
-        <CardFooter>
-          <Button className="w-full text-lg" size="lg" onClick={handleStart}>
-            <Play className="mr-2 h-6 w-6" /> Start Game
-          </Button>
-        </CardFooter>
-      </Card>
+      <div className="max-w-xl mx-auto flex flex-col items-center justify-center gap-4 p-6">
+        <Image className="mx-10" src={'/logo.png'} alt="logo" width={200} height={100}/>
+        <Button className="w-full text-lg font-bold" size="lg" onClick={handleStart}>
+          Start Game
+        </Button>
+      </div>
     );
   }
 
